@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import Pokemon from './apiRequest'
 
 
 class PocketMonster extends React.Component {

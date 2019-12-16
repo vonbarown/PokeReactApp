@@ -1,34 +1,33 @@
 import React from 'react';
 import './App.css';
 import Pokemon from './components/apiRequest';
-import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
     super()
     console.log('hello moto');
+    // this.state = {
+    //   randomNum: ''
+    // }
+
 
   }
 
-  generatePoke = async () => {
-    let randNum = 4
-    try {
-      //getting the pokemon from pokemon end point with random number
-      const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randNum}`)
-      console.log(poke.data.name);
 
-      // creatingCard(poke.data)
-      return poke.dat
-    } catch (error) {
-      console.log(error);
 
-    }
-  }
+  // getRandomNum = () => {
+  //   this.setState({
+  //     randomNum: Math.floor((Math.random() * 810) + 1)
+  //   })
+  // };
 
   render() {
+    // console.log(this.state);
+
+    // let randomNum = this.state.randomNum
     return (
       <div className="App">
-        <Pokemon generatePoke={this.generatePoke} />
+        <Pokemon />
       </div>
     );
   }
