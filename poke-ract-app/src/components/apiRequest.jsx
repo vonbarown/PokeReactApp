@@ -1,18 +1,18 @@
 import React from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import getRandomNum from './Utilities/RandomNum'
 
 class Pokemon extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            randomNum: ''
+            randomNum: 1,
+            pokeInfo: {}
         }
     }
 
-
-
-    componentDidUpdate() {
+    componentDidMount() {
         this.handleNewPokemon()
     }
 
@@ -24,34 +24,33 @@ class Pokemon extends React.Component {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
             console.log(data);
-
-            // creatingCard(poke.data)
+            this.setState({
+                pokeInfo: data,
+                randomNum: getRandomNum(801, 1)
+            })
         } catch (error) {
             console.log(error);
 
         }
     }
-    getMoves = async (pokeInfo) => {
-        //getting the moves of the pokemon generated
-        console.log(pokeInfo.moves);
-        let randomIndex = await this.getRandomNum(pokeInfo.moves.length, 0)
-        console.log(randomIndex);
+    // getMoves = async (pokeInfo) => {
+    //     //getting the moves of the pokemon generated
+    //     console.log(pokeInfo.moves);
+    //     let randomIndex = await getRandomNum(pokeInfo.moves.length, 0)
+    //     console.log(randomIndex);
 
-        let url = pokeInfo.moves[`${randomIndex}`].move.url;
-        console.log(url);
-        let movesInfo = await axios.get(url)
-        return movesInfo.data;
-    }
+    //     let url = pokeInfo.moves[`${randomIndex}`].move.url;
+    //     console.log(url);
+    //     let movesInfo = await axios.get(url)
+    //     return movesInfo.data;
+    // }
 
-    getRandomNum = () => {
-        this.setState({
-            randomNum: Math.floor((Math.random() * 810) + 1)
-        })
-    };
+    // getRandomNum = () => (Math.floor((Math.random() * 810) + 1))
 
     handleNewPokemon = async (e) => {
         let randomNum = this.state.randomNum
         await this.generatePoke(randomNum)
+
     }
 
     render() {
@@ -60,7 +59,7 @@ class Pokemon extends React.Component {
 
         return (<>
             <p>hello</p>
-            <button onClick={this.getRandomNum}>Summon Pokemon</button>
+            <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
         </>)
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Pokemon from './components/apiRequest';
+// import axios from 'axios'
 
 class App extends React.Component {
   constructor() {
@@ -12,6 +13,25 @@ class App extends React.Component {
 
 
   }
+
+  // componentDidMount() {
+  //   this.generatePoke()
+  // }
+
+  // generatePoke = async (randNum) => {
+  //   console.log('hit');
+
+  //   let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
+  //   try {
+  //     //getting the pokemon from pokemon end point with random number
+  //     const { data } = await axios.get(url)
+  //     console.log(data);
+  //     // creatingCard(poke.data)
+  //   } catch (error) {
+  //     console.log(error);
+
+  //   }
+  // }
 
 
 
@@ -27,7 +47,9 @@ class App extends React.Component {
     // let randomNum = this.state.randomNum
     return (
       <div className="App">
-        <Pokemon />
+        <Pokemon
+        // generatePoke={this.generatePoke}
+        />
       </div>
     );
   }
