@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 
 class GetMoves extends React.Component {
@@ -7,13 +8,19 @@ class GetMoves extends React.Component {
 
         this.state = {
             moves: [],
-            selectedMove: ''
+            selectedMove: '',
+            movePP: 0
         }
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         if (this.props.pokeInfo !== prevProps.pokeInfo) {
             this.getMoves(this.props.pokeInfo)
+
+        }
+
+        if (this.state.selectedMove !== prevState.selectedMove) {
+            this.getPP(this.state.selectedMove)
 
         }
     }
@@ -21,10 +28,10 @@ class GetMoves extends React.Component {
     getMoves = async (pokeInfo) => {
 
         // console.log('hepoxy', pokeInfo);
-        let movesArray = pokeInfo.moves
+
         try {
             this.setState({
-                moves: movesArray
+                moves: pokeInfo.moves
             })
         } catch (error) {
             console.log("Here be errors", error);
@@ -40,6 +47,23 @@ class GetMoves extends React.Component {
         })
 
     }
+
+    getPP = async e => {
+        let { selectedMove } = this.state
+
+        try {
+            const { data } = await axios.get(selectedMove)
+            console.log('this is move', data);
+            this.setState({
+                movePP: data.pp
+            })
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
 
     populateSelect = () => {
         const { moves } = this.state;

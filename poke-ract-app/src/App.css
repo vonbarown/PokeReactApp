@@ -36,9 +36,13 @@
     transform: rotate(360deg);
   }
 }
-.battleContainer {
+.battlePokeContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 100px;
+}
+.battleContainer {
+  display: flex;
+  flex-direction: column;
 }

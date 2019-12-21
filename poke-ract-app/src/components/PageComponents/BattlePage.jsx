@@ -7,8 +7,15 @@ class Battle extends Component {
     render() {
         return (
             <div className='battleContainer'>
-                <Pokemon />
-                <Pokemon />
+
+                <div className='battlePokeContainer'>
+                    <Pokemon />
+                    <Pokemon />
+                </div>
+
+                <div className='battleButton'>
+                    <button>Battle</button>
+                </div>
             </div>)
     }
 

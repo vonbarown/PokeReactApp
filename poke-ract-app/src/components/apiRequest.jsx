@@ -3,6 +3,7 @@ import axios from 'axios';
 import getRandomNum from './Utilities/RandomNum'
 import GetMoves from './getMoves'
 import PokeContainer from './pokeContianer'
+// import Abilities from './Abilities'
 
 
 class Pokemon extends React.Component {
@@ -32,7 +33,6 @@ class Pokemon extends React.Component {
         try {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
-            console.log(data);
             this.setState({
                 pokeInfo: data,
                 randomNum: getRandomNum(801, 1),
