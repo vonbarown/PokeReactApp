@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Pokemon from './components/apiRequest';
-// import axios from 'axios'
-
+import { Link, Switch, Route } from 'react-router-dom';
+import Home from './components/PageComponents/Home';
+import Battle from './components/PageComponents/BattlePage'
 class App extends React.Component {
   constructor() {
     super()
@@ -14,42 +14,21 @@ class App extends React.Component {
 
   }
 
-  // componentDidMount() {
-  //   this.generatePoke()
-  // }
-
-  // generatePoke = async (randNum) => {
-  //   console.log('hit');
-
-  //   let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
-  //   try {
-  //     //getting the pokemon from pokemon end point with random number
-  //     const { data } = await axios.get(url)
-  //     console.log(data);
-  //     // creatingCard(poke.data)
-  //   } catch (error) {
-  //     console.log(error);
-
-  //   }
-  // }
-
-
-
-  // getRandomNum = () => {
-  //   this.setState({
-  //     randomNum: Math.floor((Math.random() * 810) + 1)
-  //   })
-  // };
 
   render() {
-    // console.log(this.state);
 
-    // let randomNum = this.state.randomNum
     return (
       <div className="App">
-        <Pokemon
-        // generatePoke={this.generatePoke}
-        />
+        <nav>
+          <Link to="/">Home</Link>{" "}
+          <Link to="/pokemans/battle">Battle</Link>{" "}
+        </nav>
+
+        <Switch>
+          <Route exact path='/' component={Home}></Route>
+          <Route path='/pokemans/battle' component={Battle}></Route>
+        </Switch>
+
       </div>
     );
   }
