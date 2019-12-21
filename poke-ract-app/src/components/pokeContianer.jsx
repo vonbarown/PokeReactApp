@@ -14,12 +14,6 @@ class PokeContainer extends React.Component {
                     <p className='pokemonName'>{this.props.name}</p>
                     <img src={this.props.frontPic} alt="pokemon" />
                     <p className='pokeHp'>HP: {this.props.pokeHp}</p>
-                    <div className='power'>
-                        <p className='pokePPP'></p>
-                        <p className='pokePPP'></p>
-                        <p className='pokePPP'></p>
-                    </div>
-
                 </div>
 
             </div>

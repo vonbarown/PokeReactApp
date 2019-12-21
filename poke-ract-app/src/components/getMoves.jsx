@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import PokeContainer from './pokeContianer'
 
 
 class GetMoves extends React.Component {
@@ -13,22 +14,29 @@ class GetMoves extends React.Component {
             moveInfo: {
                 movePP: 0,
                 moveName: ''
-            }
+            },
+            hp: 0
         }
     }
 
+    componentDidMount() {
+        console.log('mounted');
+
+
+    }
     componentDidUpdate(prevProps, prevState) {
         // let { moveInfo } = this.state
 
-        if (this.props.pokeInfo !== prevProps.pokeInfo) {
-            this.getMoves(this.props.pokeInfo)
+        if (this.props.poke !== prevProps.poke) {
+            this.getMoves(this.props.poke.info)
 
         }
 
         if (this.state.selectedMove !== prevState.selectedMove) {
-            this.getPP(this.state.selectedMove)
+            this.handleAttack(this.state.selectedMove)
             // toast.success(`You used: ${moveInfo.moveName}`);
         }
+
     }
 
     toaster = () => {
@@ -38,13 +46,14 @@ class GetMoves extends React.Component {
 
     }
 
-    getMoves = async (pokeInfo) => {
+    getMoves = async (poke) => {
 
-        // console.log('hepoxy', pokeInfo);
+        // console.log('hepoxy', poke);
 
         try {
             this.setState({
-                moves: pokeInfo.moves
+                moves: poke.moves,
+                hp: poke.stats[5].base_stat
             })
         } catch (error) {
             console.log("Here be errors", error);
@@ -79,6 +88,14 @@ class GetMoves extends React.Component {
         }
     }
 
+    handleAttack = () => {
+        this.getPP()
+        let { hp, moveInfo } = this.state
+        this.setState({
+            hp: hp - moveInfo.movePP
+        })
+    }
+
 
     populateSelect = () => {
         const { moves } = this.state;
@@ -100,8 +117,8 @@ class GetMoves extends React.Component {
     render() {
 
         console.log("move selection state", this.state);
-        const { selectedMove } = this.state
-
+        const { selectedMove, hp } = this.state
+        const { poke } = this.props
 
         return (<>
             <select onChange={this.handleMoveSelection} value={selectedMove}>
@@ -111,6 +128,7 @@ class GetMoves extends React.Component {
                 }
             </select>
             <button onClick={this.resetSelect}>Reset</button>
+            <PokeContainer frontPic={poke.sprites.front} name={poke.info.name} pokeHp={hp} />
 
         </>)
     }
