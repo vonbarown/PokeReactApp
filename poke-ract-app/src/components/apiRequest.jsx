@@ -17,6 +17,7 @@ class Pokemon extends React.Component {
         this.handleNewPokemon()
     }
 
+
     generatePoke = async (randNum) => {
         console.log('hit');
 
@@ -44,11 +45,12 @@ class Pokemon extends React.Component {
     render() {
 
         console.log(this.state);
+        const { pokeInfo } = this.state
 
         return (<>
             <p>hello</p>
             <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
-            <GetMoves pokeInfo={this.state.pokeInfo} />
+            <GetMoves pokeInfo={pokeInfo} />
         </>)
     }
 }
