@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import getRandomNum from './Utilities/RandomNum'
 import GetMoves from './getMoves'
+import PokeContainer from './pokeContianer'
+
 
 class Pokemon extends React.Component {
     constructor(props) {
@@ -9,7 +11,12 @@ class Pokemon extends React.Component {
 
         this.state = {
             randomNum: getRandomNum(801, 1),
-            pokeInfo: []
+            pokeInfo: [],
+            sprites: {
+                front: '',
+                back: ''
+            },
+            hp: ''
         }
     }
 
@@ -28,7 +35,12 @@ class Pokemon extends React.Component {
             console.log(data);
             this.setState({
                 pokeInfo: data,
-                randomNum: getRandomNum(801, 1)
+                randomNum: getRandomNum(801, 1),
+                sprites: {
+                    front: data.sprites.front_default,
+                    back: data.sprites.back_default
+                },
+                hp: data.stats[5].base_stat
             })
         } catch (error) {
             console.log(error);
@@ -39,19 +51,21 @@ class Pokemon extends React.Component {
     handleNewPokemon = async (e) => {
         let randomNum = this.state.randomNum
         await this.generatePoke(randomNum)
-        // await this.generatePoke(randomNum)
     }
 
     render() {
 
-        console.log(this.state);
-        const { pokeInfo } = this.state
+        console.log('App state', this.state);
+        const { pokeInfo, sprites, hp } = this.state
+        // console.log(pokeInfo.sprites);
 
-        return (<>
-            <p>hello</p>
-            <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
-            <GetMoves pokeInfo={pokeInfo} />
-        </>)
+
+        return (
+            <div className='requestContainer'>
+                <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
+                <GetMoves pokeInfo={pokeInfo} />
+                <PokeContainer frontPic={sprites.front} name={pokeInfo.name} pokeHp={hp} />
+            </div>)
     }
 }
 

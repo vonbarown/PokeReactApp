@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class GetMoves extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +22,6 @@ class GetMoves extends React.Component {
 
         // console.log('hepoxy', pokeInfo);
         let movesArray = pokeInfo.moves
-        console.log(movesArray);
         try {
             this.setState({
                 moves: movesArray
@@ -45,8 +45,6 @@ class GetMoves extends React.Component {
         const { moves } = this.state;
         let moveOptions = [];
         moves.forEach((moveOp) => {
-            console.log(moveOp.url);
-
             moveOptions.push(
                 <option key={moveOp.move.url} value={moveOp.move.url}>{moveOp.move.name}</option>
             )
@@ -62,8 +60,9 @@ class GetMoves extends React.Component {
 
     render() {
 
-        console.log(this.state);
+        console.log("move selection state", this.state);
         const { selectedMove } = this.state
+
 
         return (<>
             <select onChange={this.handleMoveSelection} value={selectedMove}>
@@ -73,6 +72,7 @@ class GetMoves extends React.Component {
                 }
             </select>
             <button onClick={this.resetSelect}>Reset</button>
+
         </>)
     }
 }
