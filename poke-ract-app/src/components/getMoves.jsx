@@ -1,5 +1,6 @@
 import React from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 class GetMoves extends React.Component {
@@ -9,11 +10,16 @@ class GetMoves extends React.Component {
         this.state = {
             moves: [],
             selectedMove: '',
-            movePP: 0
+            moveInfo: {
+                movePP: 0,
+                moveName: ''
+            }
         }
     }
 
     componentDidUpdate(prevProps, prevState) {
+        // let { moveInfo } = this.state
+
         if (this.props.pokeInfo !== prevProps.pokeInfo) {
             this.getMoves(this.props.pokeInfo)
 
@@ -21,8 +27,15 @@ class GetMoves extends React.Component {
 
         if (this.state.selectedMove !== prevState.selectedMove) {
             this.getPP(this.state.selectedMove)
-
+            // toast.success(`You used: ${moveInfo.moveName}`);
         }
+    }
+
+    toaster = () => {
+        let { moveInfo } = this.state
+
+        toast.success(`You used: ${moveInfo.moveName}`);
+
     }
 
     getMoves = async (pokeInfo) => {
@@ -45,7 +58,6 @@ class GetMoves extends React.Component {
         this.setState({
             selectedMove: newMove
         })
-
     }
 
     getPP = async e => {
@@ -53,9 +65,12 @@ class GetMoves extends React.Component {
 
         try {
             const { data } = await axios.get(selectedMove)
-            console.log('this is move', data);
+            // console.log('this is move', data);
             this.setState({
-                movePP: data.pp
+                moveInfo: {
+                    movePP: data.pp,
+                    moveName: data.name
+                }
             })
 
         } catch (error) {

@@ -55,7 +55,7 @@ class Pokemon extends React.Component {
 
     render() {
 
-        console.log('App state', this.state);
+        console.log('Api request state', this.state);
         const { pokeInfo, sprites, hp } = this.state
         // console.log(pokeInfo.sprites);
 
@@ -63,7 +63,7 @@ class Pokemon extends React.Component {
         return (
             <div className='requestContainer'>
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
-                <GetMoves pokeInfo={pokeInfo} />
+                <GetMoves pokeInfo={pokeInfo} pokeHp={hp} />
                 <PokeContainer frontPic={sprites.front} name={pokeInfo.name} pokeHp={hp} />
             </div>)
     }
