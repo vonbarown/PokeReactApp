@@ -18,13 +18,13 @@ class Pokemon extends React.Component {
                     back: ''
                 }
             },
-            poke2: {
-                info: [],
-                sprites: {
-                    front: '',
-                    back: ''
-                }
-            },
+            // poke2: {
+            //     info: [],
+            //     sprites: {
+            //         front: '',
+            //         back: ''
+            //     }
+            // },
             // hp: ''
         }
     }
@@ -57,34 +57,33 @@ class Pokemon extends React.Component {
 
         }
     }
-    generatePoke2 = async () => {
-        console.log('hit');
-        let randNum = getRandomNum(801, 1)
+    // generatePoke2 = async () => {
+    //     console.log('hit');
+    //     let randNum = getRandomNum(801, 1)
 
-        let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
-        try {
-            //getting the pokemon from pokemon end point with random number
-            const { data } = await axios.get(url)
-            this.setState({
-                poke2: {
-                    info: data,
-                    sprites: {
-                        front: data.sprites.front_default,
-                        back: data.sprites.back_default
-                    },
-                    hp: data.stats[5].base_stat
-                },
-            })
-        } catch (error) {
-            console.log(error);
+    //     let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
+    //     try {
+    //         //getting the pokemon from pokemon end point with random number
+    //         const { data } = await axios.get(url)
+    //         this.setState({
+    //             poke2: {
+    //                 info: data,
+    //                 sprites: {
+    //                     front: data.sprites.front_default,
+    //                     back: data.sprites.back_default
+    //                 },
+    //                 hp: data.stats[5].base_stat
+    //             },
+    //         })
+    //     } catch (error) {
+    //         console.log(error);
 
-        }
-    }
+    //     }
+    // }
 
     handleNewPokemon = async (e) => {
         // let randomNum = getRandomNum()
         await this.generatePoke1()
-        await this.generatePoke2()
     }
 
     render() {
@@ -98,7 +97,6 @@ class Pokemon extends React.Component {
             <div className='requestContainer'>
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
                 <GetMoves poke={poke1} pokeHp={poke1.hp} />
-                <GetMoves poke={poke2} pokeHp={poke2.hp} />
 
             </div>)
     }
