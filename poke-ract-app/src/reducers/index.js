@@ -1,7 +1,7 @@
-// import { combineReducers } from "redux";
+import { combineReducers } from "redux";
 
-// import postsReducer from "./postsReducer";
+import pokemonReducer from "./pokemonReducer";
 
-// const rootReducer = combineReducers({ postsReducer });
+const rootReducer = combineReducers({ pokemonReducer });
 
-// export default rootReducer;
+export default rootReducer;
