@@ -1,4 +1,6 @@
 import { Call_Pokemon, Attack } from "./actionTypes";
+import { generatePoke1 } from './axiosUtility/axiosGetRequest'
+
 
 
 export const callPokemon = payload => {

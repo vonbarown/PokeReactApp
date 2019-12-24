@@ -1,4 +1,5 @@
-import getRandomNum from './Utilities/RandomNum'
+import getRandomNum from '../components/Utilities/RandomNum'
+import axios from 'axios'
 
 export const generatePoke1 = async () => {
     console.log('hit');
