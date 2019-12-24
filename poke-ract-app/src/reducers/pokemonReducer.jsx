@@ -7,7 +7,14 @@ const initialState = {
             front: '',
             back: ''
         }
-    }
+    },
+    // poke2: {
+    //     info: [],
+    //     sprites: {
+    //         front: '',
+    //         back: ''
+    //     }
+    // }
 };
 
 const pokemonReducer = (state = initialState, action) => {
