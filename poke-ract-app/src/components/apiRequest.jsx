@@ -1,8 +1,10 @@
 import React from 'react'
 import axios from 'axios';
+import { connect } from "react-redux";
 import getRandomNum from './Utilities/RandomNum'
 import GetMoves from './getMoves'
 // import Abilities from './Abilities'
+import { mapStateToProps } from '../reduxUtilities'
 
 
 class Pokemon extends React.Component {
@@ -102,4 +104,6 @@ class Pokemon extends React.Component {
     }
 }
 
-export default Pokemon
+export default connect(
+    mapStateToProps,
+)(Pokemon)
