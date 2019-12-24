@@ -20,11 +20,15 @@ const initialState = {
 const pokemonReducer = (state = initialState, action) => {
     let newState = { state };
 
+    console.log('help', newState);
+
     if (action.type === Call_Pokemon) {
-        // newState.posts = newState.posts.concat(action.payload);
+        newState.info = 'hello'
     }
     if (action.type === Attack) {
         // newState.posts = [...newState.posts, ...action.payload];
+        console.log('bye');
+
     }
 
     return newState;

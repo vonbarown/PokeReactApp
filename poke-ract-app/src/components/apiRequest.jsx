@@ -90,7 +90,7 @@ class Pokemon extends React.Component {
 
     render() {
 
-        console.log('Api request state', this.state);
+        // console.log('Api request state', this.state);
         const { poke1, poke2, hp } = this.state
         // console.log(poke1.sprites);
 
