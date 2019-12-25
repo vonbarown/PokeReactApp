@@ -44,6 +44,8 @@ class Pokemon extends React.Component {
         try {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
+            console.log(data);
+
             this.setState({
                 poke1: {
                     info: data,
