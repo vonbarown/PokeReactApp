@@ -7,15 +7,6 @@ import Home from './components/PageComponents/Home';
 import Battle from './components/PageComponents/BattlePage';
 
 class App extends React.Component {
-  constructor() {
-    super()
-    console.log('hello moto');
-    // this.state = {
-    //   randomNum: ''
-    // }
-
-
-  }
 
 
   render() {
