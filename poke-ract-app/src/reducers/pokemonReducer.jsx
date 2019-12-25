@@ -1,4 +1,4 @@
-import { REQUEST_POKEMON, ATTACK } from "../actions/actionTypes";
+import { REQUEST_POKEMON } from "../actions/actionTypes";
 
 const initialState = {
     poke1: {
@@ -24,9 +24,9 @@ const pokemonReducer = (state = initialState, action) => {
     if (action.type === REQUEST_POKEMON) {
         // newState.posts = newState.posts.concat(action.payload);
     }
-    if (action.type === ATTACK) {
-        // newState.posts = [...newState.posts, ...action.payload];
-    }
+    // if (action.type === ATTACK) {
+    //     // newState.posts = [...newState.posts, ...action.payload];
+    // }
 
     return newState;
 };

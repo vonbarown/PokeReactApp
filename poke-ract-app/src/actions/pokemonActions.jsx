@@ -1,6 +1,9 @@
-import axios from 'axios'
-import getRandomNum from '../components/Utilities/RandomNum'
-import { RECEIVED_POKEMON, REQUEST_POKEMON, API } from "./actionTypes";
+import {
+    SELECT_POKEMON,
+    SET_POKEMON,
+    SET_TEAM
+} from "./actionTypes";
+
 export const selectPokemon = (id, pokemon_data, is_selected) => { // accepts the Pokemon ID, Pokemon object, and a boolean representing whether it's selected or not
     return {
         type: SELECT_POKEMON,
@@ -23,4 +26,3 @@ export const setTeam = team => { // accepts an array of Pokemon object data (sam
         team
     };
 };
-
