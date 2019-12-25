@@ -1,49 +1,26 @@
 import axios from 'axios'
 import getRandomNum from '../components/Utilities/RandomNum'
-import { ATTACK, RECEIVED_POKEMON, REQUEST_POKEMON, API } from "./actionTypes";
-
-
-export const generatePoke = async () => {
-    const randNum = getRandomNum()
-    return apiAction({
-        url: `https://pokeapi.co/api/v2/pokemon/${randNum}`,
-        onSuccess: setPokemonData,
-        onFailure: () => console.log("Team rocket intercepted"),
-        label: REQUEST_POKEMON
-
-    })
-}
-
-function setPokemonData(data) {
+import { RECEIVED_POKEMON, REQUEST_POKEMON, API } from "./actionTypes";
+export const selectPokemon = (id, pokemon_data, is_selected) => { // accepts the Pokemon ID, Pokemon object, and a boolean representing whether it's selected or not
     return {
-        type: RECEIVED_POKEMON,
-        payload: data
+        type: SELECT_POKEMON,
+        id,
+        pokemon_data,
+        is_selected
     };
-}
+};
 
-
-function apiAction({
-    url = "",
-    method = "GET",
-    data = null,
-    accessToken = null,
-    onSuccess = () => { },
-    onFailure = () => { },
-    label = "",
-    headersOverride = null
-}) {
+export const setPokemon = pokemon => { // accepts a single Pokemon object
     return {
-        type: API,
-        payload: {
-            url,
-            method,
-            data,
-            accessToken,
-            onSuccess,
-            onFailure,
-            label,
-            headersOverride
-        }
+        type: SET_POKEMON,
+        pokemon
     };
-}
+};
+
+export const setTeam = team => { // accepts an array of Pokemon object data (same as the ones you find in src/data/pokemon_data.js)
+    return {
+        type: SET_TEAM,
+        team
+    };
+};
 
