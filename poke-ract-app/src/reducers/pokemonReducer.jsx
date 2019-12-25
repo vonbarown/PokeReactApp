@@ -7,33 +7,42 @@ const initialState = {
         sprites: {
             front: '',
             back: ''
-        }
+        },
+        hp: ''
     },
     poke2: {
         info: [],
         sprites: {
             front: '',
             back: ''
-        }
+        },
+        hp: ''
     }
 };
-const poke1Data = generatePoke1();
-const poke2Data = generatePoke1()
+// const poke1Data = generatePoke1();
+// // const poke2Data = generatePoke1()
+// console.log(poke1Data);
+
 
 const pokemonReducer = (state = initialState, action) => {
     let newState = { state };
-
     console.log('help', newState);
+    const poke1Data = generatePoke1();
+    // const poke2Data = generatePoke1()
+    // console.log('poke1data', poke1Data);
+
     // switch (action.type) {
     //     case Call_Pokemon:
     return (
         {
+            newState,
             poke1: {
                 info: poke1Data,
-                sprites: {
-                    // front: poke1Data.sprites.front_default,
-                    // back: poke2Data.sprites.back_default
-                }
+                // sprites: {
+                //     front: poke1Data.sprites.front_default,
+                //     back: poke1Data.sprites.back_default
+                // },
+                // hp: poke1Data.stats[5].base_stat
             }
         }
     )

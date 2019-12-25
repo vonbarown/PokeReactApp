@@ -116,7 +116,7 @@ class GetMoves extends React.Component {
 
     render() {
 
-        console.log("move selection state", this.state);
+        // console.log("move selection state", this.state);
         const { selectedMove, hp } = this.state
         const { poke } = this.props
 
