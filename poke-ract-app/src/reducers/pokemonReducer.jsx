@@ -22,15 +22,14 @@ const initialState = {
 };
 
 const pokemonReducer = (state = initialState, action) => {
-    switch (action) {
+    switch (action.type) {
         case REQUEST_POKEMON:
-            return (
-                {
-                    poke1: {
-                        info: action.data
-                    }
-                }
-            )
+            return Object.assign({}, state, {
+                poke1: {
+                    info: action.data
+                },
+                isFetching: true
+            })
         case RECEIVED_POKEMON:
             return Object.assign({}, state, {
                 isFetching: false,

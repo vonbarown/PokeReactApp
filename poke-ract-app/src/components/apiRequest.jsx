@@ -8,33 +8,13 @@ import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
 
 
 class Pokemon extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            // randomNum: getRandomNum(801, 1),
-            poke1: {
-                info: [],
-                sprites: {
-                    front: '',
-                    back: ''
-                }
-            },
-            poke2: {
-                info: [],
-                sprites: {
-                    front: '',
-                    back: ''
-                }
-            },
-            hp: ''
-        }
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
 
     componentDidMount() {
         this.handleNewPokemon()
     }
-
 
     generatePoke1 = async () => {
         console.log('hit');
@@ -72,12 +52,12 @@ class Pokemon extends React.Component {
 
     render() {
 
+        // <GetMoves poke={poke1} pokeHp={poke1.hp} />
         // console.log('Api request state', this.state);
-        const { poke1, poke2, hp } = this.state
+        // const { poke1, poke2, hp } = this.state
         return (
             <div className='requestContainer'>
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
-                <GetMoves poke={poke1} pokeHp={poke1.hp} />
             </div>)
     }
 }
