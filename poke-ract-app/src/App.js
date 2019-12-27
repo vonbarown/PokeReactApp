@@ -1,11 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Link, Switch, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Home from './components/PageComponents/Home';
-import Battle from './components/PageComponents/BattlePage';
-
+import Battle from './components/PageComponents/BattlePage'
 class App extends React.Component {
 
 
@@ -22,7 +19,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home}></Route>
           <Route path='/pokemans/battle' component={Battle}></Route>
         </Switch>
-        <ToastContainer />
+
       </div>
     );
   }

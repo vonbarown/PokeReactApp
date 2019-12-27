@@ -12,9 +12,11 @@ class Pokemon extends React.Component {
     //     super(props)
     // }
 
+
     componentDidMount() {
         this.handleNewPokemon()
     }
+
 
     generatePoke1 = async () => {
         console.log('hit');
@@ -34,7 +36,6 @@ class Pokemon extends React.Component {
     generatePoke2 = async () => {
         console.log('hit');
         let randNum = getRandomNum(964, 1)
-
         let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
         try {
             //getting the pokemon from pokemon end point with random number
@@ -48,10 +49,10 @@ class Pokemon extends React.Component {
 
     handleNewPokemon = async (e) => {
         await this.generatePoke1()
+
     }
 
     render() {
-
         // <GetMoves poke={poke1} pokeHp={poke1.hp} />
         // console.log('Api request state', this.state);
         // const { poke1, poke2, hp } = this.state
@@ -60,6 +61,7 @@ class Pokemon extends React.Component {
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
                 <PokeContainer />
             </div>)
+
     }
 }
 
