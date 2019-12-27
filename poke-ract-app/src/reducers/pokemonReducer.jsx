@@ -26,7 +26,9 @@ const pokemonReducer = (state = initialState, action) => {
         case REQUEST_POKEMON:
             return Object.assign({}, state, {
                 poke1: {
-                    info: action.data
+                    info: action.data,
+                    sprites: action.data.sprites,
+                    hp: action.data.stats[5].base_stat
                 },
                 isFetching: true
             })

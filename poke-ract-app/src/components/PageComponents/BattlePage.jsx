@@ -17,7 +17,6 @@ class Battle extends Component {
 
                 <div className='battlePokeContainer'>
                     <Pokemon />
-                    <Pokemon />
                 </div>
 
                 <div className='battleButton'>

@@ -5,7 +5,7 @@ import getRandomNum from './Utilities/RandomNum'
 import GetMoves from './getMoves'
 // import Abilities from './Abilities'
 import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
-
+import PokeContainer from './pokeContianer'
 
 class Pokemon extends React.Component {
     // constructor(props) {
@@ -58,6 +58,7 @@ class Pokemon extends React.Component {
         return (
             <div className='requestContainer'>
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
+                <PokeContainer />
             </div>)
     }
 }
