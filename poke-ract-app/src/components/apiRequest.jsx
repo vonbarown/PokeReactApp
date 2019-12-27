@@ -1,35 +1,46 @@
 import React from 'react'
 import axios from 'axios';
-import getRandomNum from './Utilities/RandomNum'
+import { connect } from "react-redux";
+import getRandomNum from '../Utilities/RandomNum'
 import GetMoves from './getMoves'
+// import Abilities from './Abilities'
+import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
+import PokeContainer from './pokeContianer'
 
 class Pokemon extends React.Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
+    // }
 
-        this.state = {
-            randomNum: getRandomNum(801, 1),
-            pokeInfo: []
-        }
-    }
 
     componentDidMount() {
         this.handleNewPokemon()
     }
 
 
-    generatePoke = async (randNum) => {
+    generatePoke1 = async () => {
         console.log('hit');
+        let randNum = getRandomNum(801, 1)
 
         let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
         try {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
-            console.log(data);
-            this.setState({
-                pokeInfo: data,
-                randomNum: getRandomNum(801, 1)
-            })
+            this.props.requestPoke(data)
+            // console.log(data);
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+    generatePoke2 = async () => {
+        console.log('hit');
+        let randNum = getRandomNum(964, 1)
+        let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
+        try {
+            //getting the pokemon from pokemon end point with random number
+            const { data } = await axios.get(url)
+            this.props.requestPoke(data)
         } catch (error) {
             console.log(error);
 
@@ -37,22 +48,23 @@ class Pokemon extends React.Component {
     }
 
     handleNewPokemon = async (e) => {
-        let randomNum = this.state.randomNum
-        await this.generatePoke(randomNum)
-        // await this.generatePoke(randomNum)
+        await this.generatePoke1()
+
     }
 
     render() {
+        // <GetMoves poke={poke1} pokeHp={poke1.hp} />
+        // console.log('Api request state', this.state);
+        // const { poke1, poke2, hp } = this.state
+        return (
+            <div className='requestContainer'>
+                <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
+                <PokeContainer />
+            </div>)
 
-        console.log(this.state);
-        const { pokeInfo } = this.state
-
-        return (<>
-            <p>hello</p>
-            <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
-            <GetMoves pokeInfo={pokeInfo} />
-        </>)
     }
 }
 
-export default Pokemon
+export default connect(
+    mapStateToProps, mapDispatchToProps
+)(Pokemon)

@@ -1,4 +1,8 @@
 import React from 'react'
+import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
+import { connect } from "react-redux";
+
+
 
 class PokeContainer extends React.Component {
     constructor(props) {
@@ -8,18 +12,14 @@ class PokeContainer extends React.Component {
     }
 
     render() {
+        const { poke1 } = this.props.state
+
         return (<>
             <div className='pokemon'>
                 <div className='subContainer'>
-                    <img src={this.props.pokeImg} alt="pokemon" />
-                    <p className='pokemonName'>{this.props.name}</p>
-                    <p className='pokeHp'>this.props.pokeHp</p>
-                    <div className='power'>
-                        <p className='pokePPP'></p>
-                        <p className='pokePPP'></p>
-                        <p className='pokePPP'></p>
-                    </div>
-
+                    <p className='pokemonName'>{poke1.info.name}</p>
+                    <img src={poke1.sprites.front_default} alt="pokemon" />
+                    <p className='pokeHp'>HP: {poke1.hp}</p>
                 </div>
 
             </div>
@@ -29,4 +29,6 @@ class PokeContainer extends React.Component {
 }
 
 
-export default PokeContainer
+export default connect(
+    mapStateToProps, mapDispatchToProps
+)(PokeContainer)
