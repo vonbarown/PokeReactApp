@@ -22,24 +22,6 @@ const initialState = {
 };
 
 const pokemonReducer = (state = initialState, action) => {
-    // switch (action) {
-    //     case REQUEST_POKEMON:
-    //         return Object.assign({}, state, {
-    //             isFetching: true,
-    //             didInvalidate: false
-    //         })
-    //     case RECEIVED_POKEMON:
-    //         return Object.assign({}, state, {
-    //             isFetching: false,
-    //             didInvalidate: false,
-    //             items: action.posts,
-    //             lastUpdated: action.receivedAt
-    //         })
-    //     default:
-
-    //         return state;
-    // }
-
     switch (action) {
         case REQUEST_POKEMON:
             return (

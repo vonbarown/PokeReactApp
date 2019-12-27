@@ -45,18 +45,7 @@ class Pokemon extends React.Component {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
             this.props.requestPoke(data)
-            console.log(data);
-
-            // this.setState({
-            //     poke1: {
-            //         info: data,
-            //         sprites: {
-            //             front: data.sprites.front_default,
-            //             back: data.sprites.back_default
-            //         },
-            //         hp: data.stats[5].base_stat
-            //     },
-            // })
+            // console.log(data);
         } catch (error) {
             console.log(error);
 
@@ -71,16 +60,6 @@ class Pokemon extends React.Component {
             //getting the pokemon from pokemon end point with random number
             const { data } = await axios.get(url)
             this.props.requestPoke(data)
-            // this.setState({
-            //     poke2: {
-            //         info: data,
-            //         sprites: {
-            //             front: data.sprites.front_default,
-            //             back: data.sprites.back_default
-            //         },
-            //         hp: data.stats[5].base_stat
-            //     },
-            // })
         } catch (error) {
             console.log(error);
 
@@ -88,7 +67,6 @@ class Pokemon extends React.Component {
     }
 
     handleNewPokemon = async (e) => {
-        // let randomNum = getRandomNum()
         await this.generatePoke1()
     }
 
@@ -96,14 +74,10 @@ class Pokemon extends React.Component {
 
         // console.log('Api request state', this.state);
         const { poke1, poke2, hp } = this.state
-        // console.log(poke1.sprites);
-
-
         return (
             <div className='requestContainer'>
                 <button onClick={this.handleNewPokemon}>Summon Pokemon</button>
                 <GetMoves poke={poke1} pokeHp={poke1.hp} />
-
             </div>)
     }
 }
