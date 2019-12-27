@@ -12,7 +12,6 @@ class PokeContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.state.poke1.info);
         const { poke1 } = this.props.state
 
         return (<>

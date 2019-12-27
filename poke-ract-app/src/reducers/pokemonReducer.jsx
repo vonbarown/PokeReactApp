@@ -2,7 +2,7 @@ import { REQUEST_POKEMON, RECEIVED_POKEMON } from "../actions/actionTypes";
 
 const initialState = {
     poke1: {
-        info: [],
+        info: {},
         sprites: {
             front: '',
             back: ''
@@ -10,7 +10,7 @@ const initialState = {
         hp: ''
     },
     poke2: {
-        info: [],
+        info: {},
         spritesFront: {
             front: '',
             back: ''
@@ -26,6 +26,11 @@ const pokemonReducer = (state = initialState, action) => {
         case REQUEST_POKEMON:
             return Object.assign({}, state, {
                 poke1: {
+                    info: action.data,
+                    sprites: action.data.sprites,
+                    hp: action.data.stats[5].base_stat
+                },
+                poke2: {
                     info: action.data,
                     sprites: action.data.sprites,
                     hp: action.data.stats[5].base_stat
