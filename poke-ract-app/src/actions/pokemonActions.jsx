@@ -4,6 +4,8 @@ import {
     SET_TEAM
 } from "./actionTypes";
 
+
+
 export const selectPokemon = (id, pokemon_data, is_selected) => { // accepts the Pokemon ID, Pokemon object, and a boolean representing whether it's selected or not
     return {
         type: SELECT_POKEMON,

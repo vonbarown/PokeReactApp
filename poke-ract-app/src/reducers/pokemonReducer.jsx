@@ -1,4 +1,4 @@
-import { REQUEST_POKEMON } from "../actions/actionTypes";
+import { REQUEST_POKEMON, RECEIVED_POKEMON } from "../actions/actionTypes";
 
 const initialState = {
     poke1: {
@@ -6,29 +6,60 @@ const initialState = {
         sprites: {
             front: '',
             back: ''
-        }
+        },
+        hp: ''
     },
     poke2: {
         info: [],
-        sprites: {
+        spritesFront: {
             front: '',
             back: ''
-        }
+        },
+        hp: ''
     },
-    hp: ''
+    isFetching: false,
+    didInvalidate: false
 };
 
 const pokemonReducer = (state = initialState, action) => {
-    let newState = { state };
+    // switch (action) {
+    //     case REQUEST_POKEMON:
+    //         return Object.assign({}, state, {
+    //             isFetching: true,
+    //             didInvalidate: false
+    //         })
+    //     case RECEIVED_POKEMON:
+    //         return Object.assign({}, state, {
+    //             isFetching: false,
+    //             didInvalidate: false,
+    //             items: action.posts,
+    //             lastUpdated: action.receivedAt
+    //         })
+    //     default:
 
-    if (action.type === REQUEST_POKEMON) {
-        // newState.posts = newState.posts.concat(action.payload);
-    }
-    // if (action.type === ATTACK) {
-    //     // newState.posts = [...newState.posts, ...action.payload];
+    //         return state;
     // }
 
-    return newState;
+    switch (action) {
+        case REQUEST_POKEMON:
+            return (
+                {
+                    poke1: {
+                        info: action.data
+                    }
+                }
+            )
+        case RECEIVED_POKEMON:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                items: action.posts,
+                lastUpdated: action.receivedAt
+            })
+        default:
+
+            return state;
+    }
 };
 
 export default pokemonReducer;
