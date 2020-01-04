@@ -21,7 +21,7 @@ const initialState = {
     didInvalidate: false
 };
 
-const pokemonReducer = (state = initialState, action) => {
+export const pokemonReducer = (state = initialState, action) => {
     switch (action.type) {
         case REQUEST_POKEMON:
             return Object.assign({}, state, {
@@ -50,4 +50,4 @@ const pokemonReducer = (state = initialState, action) => {
     }
 };
 
-export default pokemonReducer;
+// export default pokemonReducer;

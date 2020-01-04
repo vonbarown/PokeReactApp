@@ -35,7 +35,7 @@ class Pokemon extends React.Component {
     }
     generatePoke2 = async () => {
         console.log('hit');
-        let randNum = getRandomNum(964, 1)
+        let randNum = getRandomNum(801, 1)
         let url = `https://pokeapi.co/api/v2/pokemon/${randNum}`
         try {
             //getting the pokemon from pokemon end point with random number
