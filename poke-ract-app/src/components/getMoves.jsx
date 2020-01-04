@@ -62,9 +62,7 @@ class GetMoves extends React.Component {
 
     render() {
         // console.log("move selection state", this.state);
-        const { selectedMove, hp } = this.state
-        const { poke } = this.props
-
+        const { selectedMove } = this.state
 
         return (<>
             <select onChange={this.handleMoveSelection} value={selectedMove}>

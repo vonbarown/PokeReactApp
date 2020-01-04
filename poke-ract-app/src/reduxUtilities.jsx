@@ -8,6 +8,6 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-        requestPoke: randNum => dispatch(requestPoke(randNum)),
+        requestPoke: data => dispatch(requestPoke(data)),
     };
 };
