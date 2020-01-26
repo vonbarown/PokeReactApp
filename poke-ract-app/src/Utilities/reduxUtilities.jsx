@@ -1,7 +1,6 @@
-import { requestPoke } from './store/actions/requestAction'
+import { requestPoke } from '../store/actions/requestAction'
 
 export const mapStateToProps = state => {
-    console.log('mapStateToProps log', state);
     return { state: state.pokemonReducer };
 
 };

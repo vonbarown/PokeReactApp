@@ -9,16 +9,7 @@ const initialState = {
         },
         hp: ''
     },
-    poke2: {
-        info: {},
-        spritesFront: {
-            front: '',
-            back: ''
-        },
-        hp: ''
-    },
     isFetching: false,
-    didInvalidate: false
 };
 
 export const pokemonReducer = (state = initialState, action) => {
@@ -26,11 +17,6 @@ export const pokemonReducer = (state = initialState, action) => {
         case REQUEST_POKEMON:
             return Object.assign({}, state, {
                 poke1: {
-                    info: action.data,
-                    sprites: action.data.sprites,
-                    hp: action.data.stats[5].base_stat
-                },
-                poke2: {
                     info: action.data,
                     sprites: action.data.sprites,
                     hp: action.data.stats[5].base_stat

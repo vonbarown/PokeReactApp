@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import getRandomNum from '../Utilities/RandomNum'
 // import GetMoves from './getMoves'
 // import Abilities from './Abilities'
-import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
+import { mapStateToProps, mapDispatchToProps } from '../Utilities/reduxUtilities'
 import PokeContainer from './pokeContianer'
 
 class Pokemon extends React.Component {

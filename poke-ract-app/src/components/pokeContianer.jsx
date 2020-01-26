@@ -1,5 +1,5 @@
 import React from 'react'
-import { mapStateToProps, mapDispatchToProps } from '../reduxUtilities'
+import { mapStateToProps, mapDispatchToProps } from '../Utilities/reduxUtilities'
 import { connect } from "react-redux";
 
 
